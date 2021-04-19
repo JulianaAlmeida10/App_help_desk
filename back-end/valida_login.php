@@ -35,7 +35,7 @@
             se o usuario for SIM ele está autenticado
             e pode acessar as paginas do sistema
         */
-        header('Location:home.php'); //está sendo forçado o redirecionamento para 'home.php'
+        header('Location:../front-end/home.php'); //está sendo forçado o redirecionamento para 'home.php'
     }else{
         $_SESSION['autenticado'] = 'NAO';
         /* 
@@ -43,7 +43,7 @@
             quando entrar nesta condição, o usuario sera redireciondo para o index, para fazer o login novamente
             ?login=erro   -> estou passando um parametro de erro no login
             */
-        header('Location:index.php?login=erro');
+        header('Location:../front-end/index.php?login=erro');
     }
 
     /*

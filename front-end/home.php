@@ -1,7 +1,7 @@
 <!-- CORPORAÇÃO (INCLUSÃO) DO script do 'validador_acesso.php' -->
 <?php
     //incluir qualquer script que queira adicionar, uma unica vez.
-    require_once("validador_acesso.php");
+    require_once("../back-end/validador_acesso.php");
 ?>
 
 <html>
@@ -24,13 +24,13 @@
 
     <nav class="navbar navbar-dark bg-dark">
       <a class="navbar-brand" href="#">
-        <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <img src="../imagens/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         App Help Desk
       </a>
       <!-- link SAIR -->
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="logoff.php">SAIR</a>
+          <a class="nav-link" href="../back-end/logoff.php">SAIR</a>
         </li>
       </ul>
     </nav>
@@ -47,13 +47,13 @@
               <div class="row">
                 <div class="col-6 d-flex justify-content-center">
                   <!-- criando um link, na respectiva imagem -->
-                  <a href="abrir_chamado.php">
-                    <img src="formulario_abrir_chamado.png" width="70" height="70">
+                  <a href="../front-end/abrir_chamado.php">
+                    <img src="../imagens/formulario_abrir_chamado.png" width="70" height="70">
                   </a>
                 </div>
                 <div class="col-6 d-flex justify-content-center">
-                  <a href="consultar_chamado.php">
-                    <img src="formulario_consultar_chamado.png" width="70" height="70">
+                  <a href="../front-end/consultar_chamado.php">
+                    <img src="../imagens/formulario_consultar_chamado.png" width="70" height="70">
                   </a>
                 </div>
               </div>

@@ -15,6 +15,6 @@
             quando entrar nesta condição, o usuario sera redireciondo para o index, para fazer o login novamente
             ?login=erro   -> estou passando um parametro de erro no login
             */
-            header('Location:index.php?login=erro2');
+            header('Location:../front-end/index.php?login=erro2');
     }
 ?>

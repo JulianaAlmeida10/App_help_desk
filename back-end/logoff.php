@@ -5,7 +5,7 @@
     #destruir a variavel de sessão (remover todos os indices ao mesmo tempo)
     session_destroy();
     //forçando o redirecionamento
-    header('Location: index.php');
+    header('Location: ../front-end/index.php');
 
     
     /*

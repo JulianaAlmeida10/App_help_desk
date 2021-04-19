@@ -1,7 +1,7 @@
 <!-- CORPORAÇÃO (INCLUSÃO) DO script do 'validador_acesso.php' -->
 <?php
     //incluir qualquer script que queira adicionar, uma unica vez.
-    require_once("validador_acesso.php");
+    require_once("../back-end/validador_acesso.php");
 ?>
 
 <html>
@@ -23,14 +23,15 @@
   <body>
 
     <nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">
-        <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      <!-- criando um link, na respectiva imagem para 'home.php' -->
+      <a class="navbar-brand" href="../front-end/home.php">
+        <img src="../imagens/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         App Help Desk
       </a>
       <!-- link SAIR -->
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="logoff.php">SAIR</a>
+          <a class="nav-link" href="../back-end/logoff.php">SAIR</a>
         </li>
       </ul>
     </nav>
@@ -67,7 +68,7 @@
               <div class="row mt-5">
                 <div class="col-6">
                   <!-- 'a' para o botão VOLTAR ser um link, assim podendo voltar para home.php -->
-                  <a class="btn btn-lg btn-warning btn-block" href="home.php" >Voltar</a>
+                  <a class="btn btn-lg btn-warning btn-block" href="../front-end/home.php" >Voltar</a>
                 </div>
               </div>
             </div>

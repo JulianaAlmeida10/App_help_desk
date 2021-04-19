@@ -24,7 +24,7 @@
     #abrir
     //fopen('nome do arquivo (arquivo.txt)', 'especificar o que vc ira fazer no arquivo (o parametro "a" abre o aquivo para escrita)')
     //$arquivo esta recebendo a REFERENCIA do arquivo
-    $arquivo = fopen('arquivo.hd','a');
+    $arquivo = fopen('../back-end/arquivo.hd','a');
 
     #escrever
     //escrevendo o texto no arquivo
@@ -38,5 +38,5 @@
     fclose($arquivo);
 
 
-    header('Location: abrir_chamado.php');
+    header('Location: ../front-end/abrir_chamado.php');
 ?>

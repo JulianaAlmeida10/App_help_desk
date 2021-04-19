@@ -19,7 +19,7 @@
     <!-- cabeçalho -->
     <nav class="navbar navbar-dark bg-dark">
       <a class="navbar-brand" href="#">
-        <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <img src="../imagens/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         App Help Desk
       </a>
     </nav>
@@ -37,7 +37,7 @@
               <!-- 
                 action  ->  destino do submit de um formulario (pra onde o formulario será submetido)
               -->
-              <form action="valida_login.php" method="post">
+              <form action="../back-end/valida_login.php" method="post">
                 <div class="form-group">
                   <input name="email" type="email" class="form-control" placeholder="E-mail">
                 </div>
