@@ -4,6 +4,36 @@
     require_once("../back-end/validador_acesso.php");
 ?>
 
+<?php
+  /* Buscando os chamados registrados */
+
+  //array que irá armazenar os registros de chamados recuperados
+  $chamados = array();
+
+  #ABRIR
+    //fopen('nome do arquivo (arquivo.txt)', 'especificar o que vc ira fazer no arquivo (o parametro "r" indica que queremos apenas ler o arquivo)')
+    //$arquivo esta recebendo a REFERENCIA do arquivo
+    $arquivo = fopen('../back-end/arquivo.hd','r');
+
+  
+  #LER
+  /*
+    feof() -> testa pelo fim de um arquivo, percorre ate o fim. Quando chega no fim retorna TRUE. Logo como temos registros( de inicio retornaria FALSE) e para entrar no laço do 'while' tem que ser verdadeiro, então negamos !feof
+  */
+  //percorrendo cada linha (cursor) do arquivo, para recuperar os registros inseridos
+  while(!feof($arquivo)){ 
+    //Recuperando cada registro
+    //fgets -> recupera tudo que estiver na linha(do cursor)
+    $registro = fgets($arquivo);
+    //inserindo cada registro dentro do array
+    $chamados[] = $registro;
+  }//enquanto houver registros (linhas)
+
+  #FECHAR
+  fclose($arquivo);
+
+?>
+
 <html>
   <head>
     <meta charset="utf-8" />
@@ -46,24 +76,40 @@
             </div>
             
             <div class="card-body">
-              
-              <div class="card mb-3 bg-light">
-                <div class="card-body">
-                  <h5 class="card-title">Título do chamado...</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                  <p class="card-text">Descrição do chamado...</p>
+              <!-- Produção dinamica de dos Cards -->
+              <? foreach($chamados as $key => $itens_chamados) { ?>
+              <!--percorrendo o array-->
+                <?php
+                    /**********************************************************
+                      TRATAMENTO DE TEXTO:
+                        No armazenamento dos dados o caracter "#" foi substituido por "-".
+                        Logo na recuperação dos dados o processo inverso deve ser realizado. ( "-"  -> "#" ) 
+                     
+                      str_replace('parametro existente','será substituido por...', 'onde procurar')
+                    *************************************************************/
+                    str_replace('-','#', $chamados[$key]);
 
+                    //o array está recebendo a string, que tem os valores separados por '#'. Está transformando a string em vetor
+                    $chamado_dados = explode('#', $itens_chamados);
+
+                    //se o vetor não estiver preenchido(faltando ou vazio), ele pula(não exibe) o vetor e continua exibindo os demais
+                    if(count($chamado_dados) < 3){
+                      continue;
+                    }
+                ?>
+
+                <!--
+                  Dentro do laço, colocar o conteudo que sera criado varias vezes
+                -->
+                <div class="card mb-3 bg-light">
+                  <div class="card-body">
+                    <h5 class="card-title"><?=$chamado_dados[0]?></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><?=$chamado_dados[1]?></h6>
+                    <p class="card-text"><?=$chamado_dados[2]?></p>
+                  </div>
                 </div>
-              </div>
+                <? } ?>
 
-              <div class="card mb-3 bg-light">
-                <div class="card-body">
-                  <h5 class="card-title">Título do chamado...</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                  <p class="card-text">Descrição do chamado...</p>
-
-                </div>
-              </div>
 
               <div class="row mt-5">
                 <div class="col-6">
