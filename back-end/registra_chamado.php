@@ -1,8 +1,6 @@
 <?php
-    #Recuperando as informações dos inputs do 'abrir_chamado.php'
-    echo '<pre>';
-    print_r($_POST);
-    echo '</pre>';
+    #iniciando a sessão
+    session_start();
 
     /* TRABALHANDO NA MONTAGEM DO TEXTO**************************
         a separação da concatenação das string será sepadaras por #, logo tem que fazer um tratamento no back-end, que se um usuario digitar #, no momento da concatenaçã será convertida em '-'
@@ -18,7 +16,7 @@
     //texto que será armazenado dentro do arquivo.hd
     //OBS: este texto é uma string
     //PHP_EOL -> essa contante armazena o caracter de quebra de linha conforme o sistema operacional onde o php esta rodando
-    $texto = $titulo . '#' . $categoria . '#' . $descricao . PHP_EOL;
+    $texto = $_SESSION['id'] . '#' . $titulo . '#' . $categoria . '#' . $descricao . PHP_EOL;
 
 
     #abrir

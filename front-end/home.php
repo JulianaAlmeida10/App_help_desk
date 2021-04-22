@@ -2,6 +2,7 @@
 <?php
     //incluir qualquer script que queira adicionar, uma unica vez.
     require_once("../back-end/validador_acesso.php");
+
 ?>
 
 <html>

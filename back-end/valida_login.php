@@ -7,14 +7,21 @@
 
     #relação de usuarios do sistema (seria BANCO DE DADOS)
     $usuarios = array(
-        array('email' => 'julianadealmeida10@gmail.com', 'senha' => '1234567'),
-        array('email' => 'xuxu@gmail.com', 'senha' => '1234'),
-        array('email' => 'teste@teste.com', 'senha' => '123'),
-        array('email' => 'admin@admin.com', 'senha' => 'admin')
+        array('id' => 1, 'email' => 'adm@gmail.com', 'senha' => 'adm', 'perfil_id' => 1),
+        array('id' => 2,'email' => 'teste@gmail.com', 'senha' => 'adm', 'perfil_id' => 1),
+        array('id' => 3,'email' => 'jose@gmail.com', 'senha' => 'user', 'perfil_id' => 2),
+        array('id' => 4,'email' => 'maria@gmail.com', 'senha' => 'user', 'perfil_id' => 2)
     );
 
     //variavel que verifica se a autenticação foi realizada
     $usuario_autenticado = false;
+    //variavel do identificador de usuario
+    $usuario_id = null;
+    //variavel que identifica se é usuario(2) ou administrador(1)
+    $usuario_perfil_id = null;
+
+    $perfis = array(1 => 'Administrativo', 2 => 'Usuário');
+
     
 
     #percorrendo o array para verificar se (email e senha) são iguais aos recebidos no POST
@@ -22,6 +29,10 @@
         //condição que verifica se o usuario está registrado no sistema
         if($user['email'] == $_POST['email'] && $user['senha'] == $_POST['senha']){
             $usuario_autenticado = true;
+            //$usuario_id está recebendo o 'id' de quem está logando
+            $usuario_id = $user['id'];
+            //$usuario_perfil_id recebe se quem logou é usuario(2) ou adm(1)
+            $usuario_perfil_id = $user['perfil_id'];
         }
 
     }
@@ -35,6 +46,8 @@
             se o usuario for SIM ele está autenticado
             e pode acessar as paginas do sistema
         */
+        $_SESSION['id'] = $usuario_id;
+        $_SESSION['perfil_id'] = $usuario_perfil_id;
         header('Location:../front-end/home.php'); //está sendo forçado o redirecionamento para 'home.php'
     }else{
         $_SESSION['autenticado'] = 'NAO';

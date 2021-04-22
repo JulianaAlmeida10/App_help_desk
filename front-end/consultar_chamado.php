@@ -88,14 +88,30 @@
                       str_replace('parametro existente','será substituido por...', 'onde procurar')
                     *************************************************************/
                     str_replace('-','#', $chamados[$key]);
+                    
+                  //o array está recebendo a string, que tem os valores separados por '#'. Está transformando a string em vetor
+                  $chamado_dados = explode('#', $itens_chamados);
 
-                    //o array está recebendo a string, que tem os valores separados por '#'. Está transformando a string em vetor
-                    $chamado_dados = explode('#', $itens_chamados);
 
-                    //se o vetor não estiver preenchido(faltando ou vazio), ele pula(não exibe) o vetor e continua exibindo os demais
-                    if(count($chamado_dados) < 3){
-                      continue;
+                  #teste1: identificar se o perfil do usuario é adm ou user
+                  if($_SESSION['perfil_id'] == 2){
+                    //é usuario então tem filtro
+                    #controle de visualização
+                    //só vamos exibir o chamado, se ele foi criado pelo usuario
+                    if($_SESSION['id'] != $chamado_dados[0]){
+                      //se o id da pessoa logada, for diferente do id da pessoa que fez o chamado, as informações não devem ser exibidas(só para pessoa correspondente ao chamado)
+                      continue;//o foreach se guira para prixima interação, desconsiderando toda a codificação que estiver após o continue
                     }
+                    
+                  }
+
+
+
+
+                  //se o vetor não estiver preenchido(faltando ou vazio), ele pula(não exibe) o vetor e continua exibindo os demais
+                  if(count($chamado_dados) < 3){
+                    continue;
+                  }
                 ?>
 
                 <!--
@@ -103,9 +119,9 @@
                 -->
                 <div class="card mb-3 bg-light">
                   <div class="card-body">
-                    <h5 class="card-title"><?=$chamado_dados[0]?></h5>
-                    <h6 class="card-subtitle mb-2 text-muted"><?=$chamado_dados[1]?></h6>
-                    <p class="card-text"><?=$chamado_dados[2]?></p>
+                    <h5 class="card-title"><?=$chamado_dados[1]?></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><?=$chamado_dados[2]?></h6>
+                    <p class="card-text"><?=$chamado_dados[3]?></p>
                   </div>
                 </div>
                 <? } ?>
